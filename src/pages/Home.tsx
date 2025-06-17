@@ -23,7 +23,7 @@ const Home = () => {
           </div>
 
           <div className="flex gap-4">
-            <button className="bg-chenin hover:bg-yellow-600 text-bay-of-many px-6 py-3 rounded-lg font-bold transition">
+            <button className="bg-chenin border-chenin border-2 hover:bg-transparent hover:text-chenin hover:border-2 text-bay-of-many px-6 py-3 rounded-lg font-bold transition">
               Sponsor a Student
             </button>
             <button className="border-2 border-white hover:bg-white/20 px-6 py-3 rounded-lg font-bold transition">

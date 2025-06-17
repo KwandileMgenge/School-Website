@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className='flex justify-center p-2 rounded-full'>
           <img className='w-15' src="./logo.png" alt="" />
         </div>
-        <div className='font-merriweather ml-2'>
+        <div className='font-roboto ml-2'>
           <h1 className='text-2xl font-extrabold'>NHLANHLAYETHU</h1>
           <h2 className='font-bold'>SECONDARY SCHOOL</h2>
         </div>
