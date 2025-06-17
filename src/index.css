@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --font-merriweather: "Merriweather", serif;
+
+  --color-bay-of-many: #214c84;
+  --color-boalder: #7c7474;
+  --color-chenin: #ddd565;
+  --color-green-white: #f4f6f2
+}
