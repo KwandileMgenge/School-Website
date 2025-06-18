@@ -71,12 +71,10 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/src/assets/contact-hero.jpg')" }}
-      >
+      <section className="relative h-96 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/Zwelemfundo_public_school_Africom.jpg')" }}>
         <div className="text-center text-white px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 font-merriweather">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-merriweather">Contact Us</h1>
           <p className="text-lg md:text-xl">We'd love to hear from you</p>
         </div>
       </section>

@@ -31,12 +31,10 @@ const SupportUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
-        className="relative h-80 md:h-96 bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/src/assets/support-hero.jpg')" }}
-      >
+      <section className="relative h-96 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/Zwelemfundo_public_school_Africom.jpg')" }}>
         <div className="text-center text-white px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 font-merriweather">Support Our School</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-merriweather">Support Our School</h1>
           <p className="text-lg md:text-xl max-w-2xl mx-auto">
             Your generosity helps provide quality education for our students
           </p>

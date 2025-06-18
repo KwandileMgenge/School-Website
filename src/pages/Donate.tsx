@@ -245,9 +245,10 @@ const Donate = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Support Our School</h1>
+      <section className="relative h-96 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/Zwelemfundo_public_school_Africom.jpg')" }}>
+        <div className="text-center text-white px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-merriweather">Support Our School</h1>
           <p className="text-xl max-w-2xl mx-auto">
             Your donation helps provide quality education and resources for our students
           </p>
