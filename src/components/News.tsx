@@ -1,5 +1,5 @@
 
-const NewsSection = () => {
+const News = () => {
   const newsItems = [
     {
       id: 1,
@@ -81,4 +81,4 @@ const NewsSection = () => {
   );
 };
 
-export default NewsSection;
+export default News;
