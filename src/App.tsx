@@ -5,6 +5,7 @@ import Support from './pages/Support';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Donate from './pages/Donate';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/support" element={<Support />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/donate" element={<Donate/>}/>
       </Routes>
       <Footer />
     </Router>
