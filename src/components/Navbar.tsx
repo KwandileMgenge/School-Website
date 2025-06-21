@@ -44,7 +44,7 @@ const Navbar = () => {
               <li><Link to="/about" className="hover:underline px-2 py-1">About</Link></li>
               <li><Link to="/support" className="hover:underline px-2 py-1">Support Us</Link></li>
               <li><Link to="/contact" className="hover:underline px-2 py-1">Contact</Link></li>
-              <li><Button to='/donate'>Donate</Button></li>
+              <li><Button to='/support#donate'>Donate</Button></li>
             </ul>
           </div>
 

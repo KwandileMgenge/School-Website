@@ -25,7 +25,7 @@ function Hero() {
           </div>
 
           <div className="flex gap-4">
-            <Button>Sponsor a Learner</Button>
+            <Button to="/support#learner">Sponsor a Learner</Button>
             <Button variant="outline">See Our Impact</Button>
           </div>
         </div>
