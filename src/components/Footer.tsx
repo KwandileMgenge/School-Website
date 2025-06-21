@@ -1,12 +1,12 @@
 // src/components/Footer.tsx
 import { Link } from 'react-router-dom';
+import Button from './Button';
 
 const Footer = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Academics", path: "/academics" },
-    { name: "Admissions", path: "/admissions" },
     { name: "Support Us", path: "/support" },
     { name: "Contact", path: "/contact" }
   ];
@@ -84,7 +84,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* School Info */}
           <div className="mb-8">
-            <h3 className="text-xl font-bold mb-4 font-merriweather">School Name</h3>
+            <h3 className="text-xl font-bold mb-4 font-roboto">Nhlanhlayethu Secondary School</h3>
             <p className="mb-4">
               Empowering students through quality education since 1985. Our mission is to develop future leaders through academic excellence and character development.
             </p>
@@ -104,7 +104,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="mb-8">
-            <h3 className="text-xl font-bold mb-4 font-merriweather">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4 font-roboto">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -124,7 +124,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="mb-8">
-            <h3 className="text-xl font-bold mb-4 font-merriweather">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4 font-roboto">Contact Us</h3>
             <ul className="space-y-3">
               {contactInfo.map((info, index) => (
                 <li key={index} className="flex items-start">
@@ -139,7 +139,7 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div className="mb-8">
-            <h3 className="text-xl font-bold mb-4 font-merriweather">Newsletter</h3>
+            <h3 className="text-xl font-bold mb-4 font-roboto">Newsletter</h3>
             <p className="mb-4">
               Subscribe to our newsletter to receive updates about school events and achievements.
             </p>
@@ -147,15 +147,10 @@ const Footer = () => {
               <input 
                 type="email" 
                 placeholder="Your email address" 
-                className="px-3 py-2 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-chenin"
+                className="bg-green-white/20 px-3 py-2 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-chenin"
                 required
               />
-              <button 
-                type="submit"
-                className="bg-chenin text-bay-of-many font-bold py-2 px-4 rounded hover:bg-yellow-600 transition"
-              >
-                Subscribe
-              </button>
+              <Button>Subscribe</Button>
             </form>
           </div>
         </div>
@@ -163,7 +158,7 @@ const Footer = () => {
         {/* Copyright and Credits */}
         <div className="border-t border-white/20 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p>&copy; {new Date().getFullYear()} School Name. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Nhlanhlayethu Secondary School. All rights reserved.</p>
           </div>
           <div className="flex flex-col md:flex-row md:space-x-6 text-sm">
             <Link to="/privacy-policy" className="hover:text-chenin transition mb-2 md:mb-0">
