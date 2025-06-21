@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../components/Button';
+import DonationForm from '../components/DonationForm';
 
 const SupportUs = () => {
   const location = useLocation();
@@ -130,8 +131,8 @@ const SupportUs = () => {
       <main className="container mx-auto px-4 py-12 max-w-6xl">
         {/* Donation Tab */}
         {activeTab === 'donate' && (
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className='col-span-1'>
               <h2 className="text-2xl font-bold mb-6 font-merriweather text-bay-of-many">Donation Options</h2>
               <div className="space-y-6">
                 {donationTiers.map((tier, index) => (
@@ -153,10 +154,10 @@ const SupportUs = () => {
               </div>
             </div>
 
-            <div>
+            <div className='md:col-span-2'>
               <h2 className="text-2xl font-bold mb-6 font-merriweather text-bay-of-many">Donation Form</h2>
-              <form className="bg-white p-6 rounded-lg shadow-md">
-                {/* ... donation form fields ... */}
+              <form className="bg-white p-6 rounded-lg shadow-md overflow-hidden">
+                {<DonationForm/>}
               </form>
             </div>
           </div>
