@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [bgChange, setBgChange] = useState(false);
-  const [textChange, setTextChange] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const shouldChange = window.scrollY > 10;
       setBgChange(shouldChange);
-      setTextChange(shouldChange);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -22,9 +20,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed py-3 z-50 top-0 w-full ${textChange ? 'text-bay-of-many' : 'text-green-white'} ${
-      bgChange ? 'bg-green-white shadow-md' : 'bg-transparent'
-    } transition-all duration-300`}>
+    <nav className={`fixed py-3 z-50 top-0 w-full
+      ${bgChange ? 'bg-green-white text-bay-of-many shadow-md' : 'bg-transparent text-green-white'} 
+        transition-all duration-300`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo/Branding */}
@@ -73,7 +71,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden ${isOpen ? 'block' : 'hidden'} transition-all duration-300`}>
+        <div className={`md:hidden ${isOpen ? 'block bg-green-white text-bay-of-many pb-5' : 'hidden'} transition-all duration-300`}>
           <ul className="pt-4 pb-2 space-y-3">
             <li>
               <Link 
