@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from './Button';
 
 const Navbar = () => {
   const [bgChange, setBgChange] = useState(false);
@@ -43,10 +44,7 @@ const Navbar = () => {
               <li><Link to="/about" className="hover:underline px-2 py-1">About</Link></li>
               <li><Link to="/support" className="hover:underline px-2 py-1">Support Us</Link></li>
               <li><Link to="/contact" className="hover:underline px-2 py-1">Contact</Link></li>
-              <li><Link to="/donate" className="ml-6 px-4 py-2 bg-chenin text-bay-of-many rounded-lg font-bold hover:bg-yellow-600 transition">
-                    Donate
-                  </Link>
-              </li>
+              <li><Button to='/donate'>Donate</Button></li>
             </ul>
           </div>
 
@@ -110,10 +108,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/donate" 
-                className="ml-6 px-4 py-2 bg-chenin text-bay-of-many rounded-lg font-bold hover:bg-yellow-600 transition">
-                Donate
-              </Link>
+              <Button to='/donate'>Donate</Button>
             </li>
           </ul>
         </div>
