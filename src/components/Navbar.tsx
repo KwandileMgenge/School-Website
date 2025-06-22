@@ -27,19 +27,21 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo/Branding */}
-          <div className="flex items-center">
-            <div className="flex justify-center p-2 rounded-full">
-              <img className="w-12 md:w-15" src="./logo.png" alt="School Logo" />
+          <Link to={'/'}>
+            <div className="flex items-center">
+              <div className="flex justify-center p-2 rounded-full">
+                <img className="w-10 md:w-15" src="./logo.png" alt="School Logo" />
+              </div>
+              <div className="font-roboto ml-2">
+                <h1 className="text-l md:text-xl font-extrabold">NHLANHLAYETHU</h1>
+                <h2 className="text-sm md:text-base font-extrabold">SECONDARY SCHOOL</h2>
+              </div>
             </div>
-            <div className="font-roboto ml-2">
-              <h1 className="text-xl md:text-2xl font-extrabold">NHLANHLAYETHU</h1>
-              <h2 className="text-sm md:text-base font-bold">SECONDARY SCHOOL</h2>
-            </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
-            <ul className="flex font-bold space-x-6 lg:space-x-10">
+          <div className="hidden md:flex items-center justify-center h-full">
+            <ul className="flex items-center space-x-6 lg:space-x-10 font-bold">
               <li><Link to="/" className="hover:underline px-2 py-1">Home</Link></li>
               <li><Link to="/about" className="hover:underline px-2 py-1">About</Link></li>
               <li><Link to="/support" className="hover:underline px-2 py-1">Support Us</Link></li>

@@ -1,8 +1,9 @@
 // src/pages/SupportUs.tsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../components/Button';
 import DonationForm from '../components/DonationForm';
+import SponsorProject from '../components/SponsorProject';
 
 const SupportUs = () => {
   const location = useLocation();
@@ -21,30 +22,11 @@ const SupportUs = () => {
     else setActiveTab('donate');
   }, [hash]);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    amount: '',
-    message: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
   // Donation Options (South African Rand)
   const donationTiers = [
     { name: "Supporter", amount: "R500", perks: ["Thank you letter"] },
     { name: "Benefactor", amount: "R5,000", perks: ["Certificate of appreciation", "School tour"] },
     { name: "Champion", amount: "R50,000", perks: ["Naming opportunity", "VIP event invites"] }
-  ];
-
-  // Project Sponsorship
-  const urgentNeeds = [
-    { id: 1, name: "Science Lab Equipment", target: "R120,000", progress: 35 },
-    { id: 2, name: "Library Books", target: "R80,000", progress: 15 },
-    { id: 3, name: "Sports Facilities", target: "R150,000", progress: 10 }
   ];
 
   // Learner Sponsorship
@@ -166,30 +148,7 @@ const SupportUs = () => {
         {/* Project Sponsor Tab */}
         {activeTab === 'sponsor' && (
           <div>
-            <h2 className="text-2xl font-bold mb-8 font-merriweather text-bay-of-many">Current Funding Needs</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {urgentNeeds.map((need) => (
-                <div key={need.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
-                  <h3 className="text-xl font-bold mb-3 font-merriweather">{need.name}</h3>
-                  <p className="text-gray-600 mb-4">Target: {need.target}</p>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-                    <div 
-                      className="bg-chenin h-2.5 rounded-full" 
-                      style={{ width: `${need.progress}%` }}
-                    ></div>
-                  </div>
-                  <Link 
-                    to="/contact" 
-                    className="text-bay-of-many font-medium hover:underline flex items-center"
-                  >
-                    Sponsor this project
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <SponsorProject/>
           </div>
         )}
 
