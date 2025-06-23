@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../components/Button';
-import DonationForm from '../components/DonationForm';
-import SponsorProject from '../components/SponsorProject';
+import DonationForm from '../components/support/DonationForm';
+import SponsorProject from '../components/support/SponsorProject';
 
 const SupportUs = () => {
   const location = useLocation();

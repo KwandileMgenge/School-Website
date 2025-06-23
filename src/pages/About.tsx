@@ -1,5 +1,5 @@
 
-import MissionVision from '../components/MissionVision';
+import MissionVision from '../components/about/MissionVision';
 
 const About = () => {
   return (

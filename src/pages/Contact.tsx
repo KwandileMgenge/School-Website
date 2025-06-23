@@ -1,38 +1,6 @@
-// src/pages/ContactUs.tsx
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
-    // Reset submission status after 5 seconds
-    setTimeout(() => setSubmitted(false), 5000);
-  };
 
   const contactMethods = [
     {
@@ -119,91 +87,10 @@ const ContactUs = () => {
         {/* Contact Form */}
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl font-bold mb-6 font-merriweather text-bay-of-many">Send Us a Message</h2>
-            
-            {submitted ? (
-              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                Thank you for your message! We'll get back to you soon.
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-700 mb-2">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-chenin"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-gray-700 mb-2">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-chenin"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-chenin"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-gray-700 mb-2">Subject *</label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-chenin"
-                    required
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="Admissions">Admissions</option>
-                    <option value="Donations">Donations</option>
-                    <option value="Volunteering">Volunteering</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-gray-700 mb-2">Message *</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-chenin"
-                    required
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-chenin text-bay-of-many font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
+            <iframe className='w-full'  height="740" frameBorder={0} marginHeight={0} marginWidth={0}
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfHMFCKa9G2b6WZw5zmz2bgDoGBM9uuFNACJVLh6FA6RqdOdg/viewform?embedded=true">
+                Loading…
+            </iframe>
           </div>
 
           {/* Map and Additional Info */}
@@ -214,7 +101,7 @@ const ContactUs = () => {
               {/* Replace with your actual map embed */}
               <iframe 
                 title="School Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.123456789012!2d28.12345678901234!3d-26.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDA3JzI0LjQiTiAyOMKwMDcnMjQuNCJF!5e0!3m2!1sen!2sza!4v1234567890123!5m2!1sen!2sza"
+                src="https://www.google.com/maps/place/77+Somlandela+Dr,+Newtown+B+Ext,+Inanda,+4310/@-29.7174483,30.9574316,674m/data=!3m1!1e3!4m6!3m5!1s0x1ef70313ca839f39:0x1961f5ced88587bb!8m2!3d-29.7167595!4d30.9603664!16s%2Fg%2F11kmyrynxv?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -231,20 +118,13 @@ const ContactUs = () => {
                   <span>7:30 AM - 4:00 PM</span>
                 </li>
                 <li className="flex justify-between">
-                  <span className="font-medium">Saturday:</span>
-                  <span>8:00 AM - 12:00 PM</span>
-                </li>
-                <li className="flex justify-between">
-                  <span className="font-medium">Sunday:</span>
+                  <span className="font-medium">Saturday - Sunday:</span>
                   <span>Closed</span>
                 </li>
               </ul>
 
               <h3 className="text-xl font-bold mt-6 mb-4 font-merriweather">Quick Links</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/admissions" className="text-bay-of-many hover:underline">Admissions Process</Link>
-                </li>
                 <li>
                   <Link to="/faq" className="text-bay-of-many hover:underline">FAQ</Link>
                 </li>
