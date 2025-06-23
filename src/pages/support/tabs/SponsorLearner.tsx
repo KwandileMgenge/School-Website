@@ -3,38 +3,42 @@ import { Link } from 'react-router-dom';
 const SponsorLearner = () => {
   // Sponsorship options for a no-fee school
   const supportOptions = [
-    {
+      {
       id: 1,
-      type: "Uniform & Shoes",
-      amount: "R800/year",
+      type: "Complete Uniform Pack",
+      amount: "R950/year",
       includes: [
-        "Full school uniform set",
+        "2x Summer uniforms (shirt/dress + trousers/skirt)",
+        "1x Winter jersey",
         "Pair of school shoes",
-        "Winter jersey"
+        "Sports kit",
+        "School bag"
       ],
-      impact: "Ensures dignity and compliance with dress code"
+      impact: "Ensures dignity and full participation"
     },
     {
       id: 2,
-      type: "Learning Materials",
-      amount: "R1,200/year",
+      type: "Learning Essentials Kit",
+      amount: "R1,800/year",
       includes: [
-        "Textbooks and workbooks",
-        "Stationery pack",
-        "Scientific calculator (Grade 10-12)"
+        "Full stationery set",
+        "Mathematics instruments",
+        "Prescribed novels",
+        "Scientific calculator (Gr.10-12)",
+        "USB drive for digital work"
       ],
-      impact: "Provides tools for academic success"
+      impact: "Equips learners for academic success"
     },
     {
       id: 3,
-      type: "Daily Nutrition",
-      amount: "R1,500/year",
+      type: "Afternoon Nutrition Pack",
+      amount: "R600/year",
       includes: [
-        "Nutritious daily lunch",
-        "Exam-time energy snacks",
-        "Winter soup program"
+        "Take-home snack packs",
+        "Exam period brain foods",
+        "Weekend nutrition support"
       ],
-      impact: "Supports concentration and health"
+      impact: "Supports learning beyond school hours"
     }
   ];
 
@@ -51,17 +55,6 @@ const SponsorLearner = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section 
-        className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/src/assets/sponsor-hero.jpg')" }}
-      >
-        <div className="text-center text-white px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 font-merriweather">Support a Learner</h1>
-          <p className="text-lg md:text-xl">Help break barriers to education</p>
-        </div>
-      </section>
-
       {/* Why Support Section */}
       <section className="bg-green-white py-12">
         <div className="container mx-auto px-4 max-w-4xl text-center">

@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
-import Support from './pages/Support';
+import Support from './pages/support/Support';
 import Contact from './pages/Contact';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import SponsorLearner from './pages/SponsorLearner';
+import OurImpact from './pages/OurImpact';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/support" element={<Support />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/sponsorlearner" element={<SponsorLearner/>}/>
+        <Route path='/our-impact' element={<OurImpact/>}/>
       </Routes>
       <Footer />
     </Router>

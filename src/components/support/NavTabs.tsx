@@ -11,7 +11,8 @@ function NavTabs() {
           <div className="flex flex-col sm:flex-row justify-center">
             <Link 
               to="/support#donate"
-              className={`py-4 px-6 font-medium text-center ${activeTab === 'donate' ? 'bg-chenin text-bay-of-many' : 'hover:bg-blue-800'}`}
+              className={`py-4 px-6 font-medium text-center ${activeTab === 'donate' ? 'bg-chenin text-bay-of-many' : 'hover:bg-blue-800'} 
+              ${activeTab === '' ? 'bg-chenin text-bay-of-many hover:bg-chenin' : ''}`}
             >
               Make a Donation
             </Link>

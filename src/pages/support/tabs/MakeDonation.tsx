@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import DonationForm from '../components/support/DonationForm';
+import DonationForm from '../../../components/support/DonationForm';
 
 function MakeDonation() {
   // Donation Options (South African Rand)
