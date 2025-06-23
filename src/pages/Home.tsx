@@ -1,6 +1,6 @@
-import Hero from "../components/Hero";
+import Hero from "../components/home/Hero";
 import News from "../components/home/News";
-import UrgentNeeds from "../components/support/UrgentNeeds";
+import UrgentNeeds from "../components/home/UrgentNeeds";
 
 const Home = () => {
   return (
@@ -10,8 +10,6 @@ const Home = () => {
       <News/>
 
       <UrgentNeeds/>
-
-      
     </div>
   );
 };
