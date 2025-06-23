@@ -7,6 +7,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import OurImpact from './pages/OurImpact';
+import FAQ from './pages/FAQ';
+import Staff from './pages/Staff';
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/support" element={<Support />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path='/our-impact' element={<OurImpact/>}/>
+        <Route path='/our-impact' element={<OurImpact />} />
+        <Route path='/staff' element={<Staff />} />
+        <Route path='/faq' element={<FAQ />} />
       </Routes>
       <Footer />
     </Router>

@@ -101,7 +101,7 @@ const ContactUs = () => {
               {/* Replace with your actual map embed */}
               <iframe 
                 title="School Location"
-                src="https://www.google.com/maps/place/77+Somlandela+Dr,+Newtown+B+Ext,+Inanda,+4310/@-29.7174483,30.9574316,674m/data=!3m1!1e3!4m6!3m5!1s0x1ef70313ca839f39:0x1961f5ced88587bb!8m2!3d-29.7167595!4d30.9603664!16s%2Fg%2F11kmyrynxv?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.5368501400817!2d30.962035999999998!3d-29.717144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef70313ca839f39%3A0x1961f5ced88587bb!2s77%20Somlandela%20Dr%2C%20Newtown%20B%20Ext%2C%20Inanda%2C%204310!5e1!3m2!1sen!2sza!4v1750691134413!5m2!1sen!2sza"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
