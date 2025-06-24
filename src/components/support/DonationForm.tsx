@@ -2,6 +2,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const PAYFAST_CONFIG = {
+  merchant_id: 'YOUR_MERCHANT_ID',
+  merchant_key: 'YOUR_MERCHANT_KEY',
+  return_url: 'https://nhlanhlayethu.netlify.app/donation-success',
+  cancel_url: 'https://nhlanhlayethu.netlify.app/donation-cancel',
+  notify_url: 'https://nhlanhlayethu.netlify.app/api/payfast-notify',
+  sandbox: true // Set to true for testing
+};
+
 const DonationForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -26,7 +35,6 @@ const DonationForm = () => {
       [name]: type === 'checkbox' ? checked : value
     }));
 
-    // Clear error when user types
     if (errors[name]) {
       setErrors(prev => {
         const newErrors = { ...prev };
@@ -58,28 +66,78 @@ const DonationForm = () => {
     
     if (!validate()) return;
 
+    const paymentMethod = (e.currentTarget as HTMLFormElement).elements.namedItem('paymentMethod') as RadioNodeList;
+    const selectedMethod = paymentMethod.value;
+
+    if (selectedMethod !== 'payfast') {
+      // Handle other payment methods
+      setIsSubmitting(true);
+      setTimeout(() => {
+        console.log('Form submitted:', formData);
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        setTimeout(() => {
+          setIsSuccess(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            amount: '',
+            frequency: 'once',
+            message: '',
+            anonymous: false
+          });
+        }, 5000);
+      }, 1500);
+      return;
+    }
+
+    // PayFast submission
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      
-      // Reset form after 5 seconds
-      setTimeout(() => {
-        setIsSuccess(false);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          amount: '',
-          frequency: 'once',
-          message: '',
-          anonymous: false
-        });
-      }, 5000);
-    }, 1500);
+    // Prepare PayFast data
+    const payfastData = {
+      merchant_id: PAYFAST_CONFIG.merchant_id,
+      merchant_key: PAYFAST_CONFIG.merchant_key,
+      return_url: PAYFAST_CONFIG.return_url,
+      cancel_url: PAYFAST_CONFIG.cancel_url,
+      notify_url: PAYFAST_CONFIG.notify_url,
+      name_first: formData.name.split(' ')[0],
+      name_last: formData.name.split(' ').slice(1).join(' '),
+      email_address: formData.email,
+      cell_number: formData.phone,
+      amount: parseFloat(formData.amount).toFixed(2),
+      item_name: `${formData.frequency} donation`,
+      item_description: formData.message || 'Donation',
+      custom_int1: formData.anonymous ? 1 : 0,
+      m_payment_id: `donation-${Date.now()}`,
+      subscription_type: formData.frequency === 'monthly' ? 1 : (formData.frequency === 'quarterly' ? 2 : 0),
+      frequency: formData.frequency === 'monthly' ? 3 : (formData.frequency === 'quarterly' ? 4 : 0),
+      cycles: formData.frequency === 'once' ? 0 : 0 // 0 for indefinite recurring
+    };
+
+    // Remove empty values
+    const filteredData = Object.fromEntries(
+      Object.entries(payfastData).filter(([_, value]) => value !== '' && value !== undefined)
+    );
+
+    // Create form and submit to PayFast
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = PAYFAST_CONFIG.sandbox 
+      ? 'https://sandbox.payfast.co.za/eng/process' 
+      : 'https://www.payfast.co.za/eng/process';
+
+    Object.entries(filteredData).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value as string;
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
   };
 
   const suggestedAmounts = [100, 250, 500, 1000, 2500];
@@ -247,16 +305,16 @@ const DonationForm = () => {
           <div className="grid md:grid-cols-3 gap-4">
             {[
               {
+                id: 'payfast',
+                name: 'PayFast',
+                icon: '🔒',
+                desc: 'Secure online payment (Credit/Debit Card, Instant EFT)'
+              },
+              {
                 id: 'eft',
                 name: 'Bank Transfer',
                 icon: '🏦',
                 desc: 'We\'ll email you our banking details'
-              },
-              {
-                id: 'paypal',
-                name: 'PayPal',
-                icon: '🔵',
-                desc: 'Secure online payment'
               },
               {
                 id: 'debit',
