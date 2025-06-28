@@ -6,6 +6,7 @@ import SponsorProject from './tabs/SponsorProject';
 import MakeDonation from './tabs/MakeDonation';
 import NavTabs from '../../components/support/NavTabs';
 import SponsorLearner from './tabs/SponsorLearner';
+import HeroSub from '../../components/HeroSub';
 
 const SupportUs = () => {
   const location = useLocation();
@@ -27,15 +28,9 @@ const SupportUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-64 md:h-80 bg-cover bg-center flex items-center justify-center"
-        style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/src/assets/support-hero.jpg')" }}>
-        <div className="text-center text-white px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 font-merriweather">Support Our School</h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto">
-            Your generosity helps provide quality education for our learners
-          </p>
-        </div>
-      </section>
+      <HeroSub imageUrl="/Zwelemfundo_public_school_Africom.jpg" title="Support Our School"
+        subtitle="Your generosity helps provide quality education for our learners"
+      />
 
       {/* Navigation Tabs */}
       <NavTabs/>

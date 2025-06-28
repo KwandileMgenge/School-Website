@@ -1,5 +1,6 @@
 
 import MissionVision from '../components/about/MissionVision';
+import HeroSub from '../components/HeroSub';
 
 const About = () => {
   return (
@@ -8,13 +9,9 @@ const About = () => {
       <meta name="description" content="Learn about [School Name]'s history, educational philosophy, and commitment to empowering students through quality education" />
 
       {/* Hero Section */}
-      <section className="relative h-96 bg-cover bg-center flex items-center justify-center" 
-              style={{ backgroundImage: "linear-gradient(rgba(33, 76, 132, 0.8), rgba(33, 76, 132, 0.6)), url('/Zwelemfundo_public_school_Africom.jpg')" }}>
-        <div className="text-center text-white px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-merriweather">Our Story</h1>
-          <p className="text-xl max-w-2xl mx-auto">Discover the heart behind [School Name]'s commitment to transformative education</p>
-        </div>
-      </section>
+      <HeroSub imageUrl="/Zwelemfundo_public_school_Africom.jpg" title="Our Story"
+        subtitle="Discover the heart behind our commitment to transformative education"
+      />
 
       {/* History Section */}
       <section className="py-16 bg-white">
