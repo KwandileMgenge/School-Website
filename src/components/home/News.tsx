@@ -1,31 +1,88 @@
+import { useState, useEffect } from 'react';
+import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
+
+// Define the type for your news items
+interface NewsItem {
+  id: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  date: Timestamp; // Firestore Timestamp type
+  // Add other fields as needed
+}
 
 const News = () => {
-  const newsItems = [
-    {
-      id: 1,
-      title: "School Wins Regional Science Fair",
-      date: "May 15, 2023",
-      excerpt: "Our team took first place in the regional STEM competition with their innovative water purification project.",
-      category: "Achievements",
-      image: "/science-fair.jpg" // Replace with your image path
-    },
-    {
-      id: 2,
-      title: "New Computer Lab Grant Received",
-      date: "April 28, 2023",
-      excerpt: "Thanks to generous donors, we've secured funding for a 20-station computer lab to launch next term.",
-      category: "Development",
-      image: "/computer-lab.jpg"
-    },
-    {
-      id: 3,
-      title: "Annual Sports Day Results",
-      date: "March 10, 2023",
-      excerpt: "Over 200 students participated in our biggest sports day yet. See the winning teams and photos.",
-      category: "Events",
-      image: "/sports-day.jpg"
+  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Function to format Firestore Timestamp to readable date
+  const formatDate = (timestamp: Timestamp): string => {
+    if (!timestamp) return 'No date';
+    
+    try {
+      const date = timestamp.toDate();
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return 'Invalid date';
     }
-  ];
+  };
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        setLoading(true);
+        // Query the 'news' collection, ordered by date
+        const newsQuery = query(
+          collection(db, 'initCollection'), 
+          orderBy('date', 'desc')
+        );
+        
+        const querySnapshot = await getDocs(newsQuery);
+        const newsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as NewsItem[];
+        
+        setNewsItems(newsData);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching news:', err);
+        setError('Failed to load news. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl text-center">
+          <div className="text-2xl">Loading news...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl text-center">
+          <div className="text-red-500 text-xl">{error}</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 bg-white">
@@ -55,7 +112,9 @@ const News = () => {
               <div className="p-6">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm font-medium text-chenin">{item.category}</span>
-                  <span className="text-sm text-gray-500">{item.date}</span>
+                  <span className="text-sm text-gray-500">
+                    {formatDate(item.date)} {/* Use the formatDate function here */}
+                  </span>
                 </div>
                 <h3 className="text-xl font-bold text-bay-of-many mb-3 font-merriweather">{item.title}</h3>
                 <p className="text-gray-600 mb-4">{item.excerpt}</p>
