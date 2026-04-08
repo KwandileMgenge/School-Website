@@ -28,9 +28,18 @@ const SupportUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <HeroSub imageUrl="/Zwelemfundo_public_school_Africom.jpg" title="Support Our School"
-        subtitle="Your generosity helps provide quality education for our learners"
+      <HeroSub 
+        imageUrl="/images/school-hero.jpg" 
+        title="Support Our School"
+        subtitle="Quintile 3 no-fee school in Inanda Newtown B • Every contribution helps our 1,404 learners"
       />
+
+    {/* Intro banner */}
+    <div className="bg-emerald-700 text-white py-6">
+      <div className="container mx-auto px-4 max-w-6xl text-center">
+        <p className="text-lg">As a no-fee public school we rely on community and corporate partners for uniforms, sports kits, books, and technology upgrades.</p>
+      </div>
+    </div>
 
       {/* Navigation Tabs */}
       <NavTabs/>

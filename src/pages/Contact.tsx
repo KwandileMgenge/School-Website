@@ -103,8 +103,10 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <HeroSub imageUrl="/Zwelemfundo_public_school_Africom.jpg" title="Contact Us"
-        subtitle="We're here to help and answer any questions you might have"
+      <HeroSub 
+        imageUrl="/images/school-hero.jpg" 
+        title="Contact Us"
+        subtitle="Nhlanhlayethu Secondary School • Inanda Newtown B, Durban"
       />
 
       {/* Main Content */}
