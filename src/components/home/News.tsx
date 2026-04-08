@@ -41,7 +41,7 @@ const News = () => {
         setLoading(true);
         // Query the 'news' collection, ordered by date
         const newsQuery = query(
-          collection(db, 'initCollection'), 
+          collection(db, 'news'), 
           orderBy('date', 'desc')
         );
         

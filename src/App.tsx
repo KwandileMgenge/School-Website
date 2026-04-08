@@ -9,6 +9,7 @@ import ScrollToTop from './components/ScrollToTop';
 import OurImpact from './pages/OurImpact';
 import FAQ from './pages/FAQ';
 import Staff from './pages/Staff';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/support" element={<Support />} />
         <Route path="/contact" element={<Contact />} />
