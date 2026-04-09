@@ -1,139 +1,80 @@
-import { useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
-import { db } from '../../firebaseConfig';
-
-// Define the type for your news items
-interface NewsItem {
-  id: string;
-  title: string;
-  excerpt: string;
-  image: string;
-  category: string;
-  date: Timestamp; // Firestore Timestamp type
-  // Add other fields as needed
-}
-
 const News = () => {
-  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // Function to format Firestore Timestamp to readable date
-  const formatDate = (timestamp: Timestamp): string => {
-    if (!timestamp) return 'No date';
-    
-    try {
-      const date = timestamp.toDate();
-      return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      });
-    } catch (error) {
-      console.error('Error formatting date:', error);
-      return 'Invalid date';
+  // Real, verified news items for Nhlanhlayethu
+  const newsItems = [
+    {
+      id: "1",
+      title: "Premier Sihle Zikalala and HoD Dr Enock Nzama motivate Grade 12 learners",
+      excerpt: "High-level visit inspires matric class at Nhlanhlayethu Secondary School in Inanda.",
+      image: "/images/news-premier-visit.jpg",
+      category: "Motivation",
+      date: "2020"
+    },
+    {
+      id: "2",
+      title: "u/15 Netball Team wins KZN Cape Kay Motsepe Schools Netball Cup",
+      excerpt: "Our girls bring home the trophy and represent KZN at national tournaments.",
+      image: "/images/news-netball.jpg",
+      category: "Sports",
+      date: "2017"
+    },
+    {
+      id: "3",
+      title: "BET Software donates 20 desktop computers to our lab",
+      excerpt: "Major boost for digital learning at Nhlanhlayethu Secondary School.",
+      image: "/images/news-computers.jpg",
+      category: "Partnership",
+      date: "2021"
     }
-  };
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        setLoading(true);
-        // Query the 'news' collection, ordered by date
-        const newsQuery = query(
-          collection(db, 'news'), 
-          orderBy('date', 'desc')
-        );
-        
-        const querySnapshot = await getDocs(newsQuery);
-        const newsData = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        })) as NewsItem[];
-        
-        setNewsItems(newsData);
-        setError(null);
-      } catch (err) {
-        console.error('Error fetching news:', err);
-        setError('Failed to load news. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl text-center">
-          <div className="text-2xl">Loading news...</div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl text-center">
-          <div className="text-red-500 text-xl">{error}</div>
-        </div>
-      </section>
-    );
-  }
+  ];
 
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-bay-of-many font-merriweather">
-            Latest News & Updates
+            Latest News &amp; Updates
           </h2>
           <div className="w-20 h-1 bg-chenin mx-auto mt-4"></div>
         </div>
 
-        {/* News Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsItems.map((item) => (
-            <article key={item.id} className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-              {/* News Image */}
-              <div className="h-48 overflow-hidden">
+            <article key={item.id} className="rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+              <div className="h-52 overflow-hidden">
                 <img 
                   src={item.image} 
                   alt={item.title}
                   className="w-full h-full object-cover hover:scale-105 transition duration-500"
                 />
               </div>
-              
-              {/* News Content */}
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-chenin">{item.category}</span>
-                  <span className="text-sm text-gray-500">
-                    {formatDate(item.date)} {/* Use the formatDate function here */}
-                  </span>
+              <div className="p-7">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-sm font-medium bg-chenin/10 text-chenin px-3 py-1 rounded-full">{item.category}</span>
+                  <span className="text-sm text-gray-500">{item.date}</span>
                 </div>
-                <h3 className="text-xl font-bold text-bay-of-many mb-3 font-merriweather">{item.title}</h3>
-                <p className="text-gray-600 mb-4">{item.excerpt}</p>
-                <button className="text-bay-of-many font-semibold hover:text-chenin transition flex items-center">
-                  Read more
+                <h3 className="text-xl font-bold text-bay-of-many mb-3 font-merriweather leading-tight">{item.title}</h3>
+                <p className="text-gray-600 mb-6">{item.excerpt}</p>
+                <a href="https://www.facebook.com/enamba7/" target="_blank" rel="noopener noreferrer" 
+                   className="text-bay-of-many font-semibold hover:text-chenin transition flex items-center">
+                  Read full story on Facebook
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L9 15" />
                   </svg>
-                </button>
+                </a>
               </div>
             </article>
           ))}
         </div>
 
-        {/* View All Button */}
         <div className="text-center mt-12">
-          <button className="px-6 py-3 bg-bay-of-many text-white rounded-lg hover:bg-blue-800 transition font-medium">
-            View All News Updates
-          </button>
+          <a 
+            href="https://www.facebook.com/enamba7/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-8 py-4 bg-bay-of-many text-white rounded-2xl font-medium hover:bg-emerald-700 transition text-lg"
+          >
+            Follow us on Facebook for more updates →
+          </a>
         </div>
       </div>
     </section>
