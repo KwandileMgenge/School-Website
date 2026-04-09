@@ -1,6 +1,3 @@
-// components/HowYouCanHelp.tsx   ← (you can rename the file and import)
-import React from 'react';
-
 const HowYouCanHelp = () => {
   const needs = [
     {
