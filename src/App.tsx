@@ -9,6 +9,13 @@ import ScrollToTop from './components/ScrollToTop';
 import OurImpact from './pages/OurImpact';
 import FAQ from './pages/FAQ';
 import Staff from './pages/Staff';
+import { Helmet } from 'react-helmet-async';
+
+<Helmet>
+  <title>Nhlanhlayethu Secondary School | Inanda Newtown B, Durban</title>
+  <meta name="description" content="Quintile 3 no-fee public secondary school in Inanda Newtown B serving 1,404 learners. Grades 8–12, improving matric results, strong netball programme." />
+  <meta name="keywords" content="secondary school Inanda, no-fee school Durban, Nhlanhlayethu Secondary School, Inanda Newtown B school" />
+</Helmet>
 
 function App() {
   return (
